@@ -157,7 +157,7 @@ flowchart LR
 
 ## 🎥 วิดีโอสาธิตการทำงาน (Video Demonstration)
 
-https://github.com/user-attachments/assets/307a79fa-1d68-4e1c-8d24-c2332c993d24
+https://github.com/user-attachments/assets/4fec0ba1-4442-40e8-99b2-eb482aefe98b
 
 ---
 
