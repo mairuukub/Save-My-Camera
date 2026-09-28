@@ -53,7 +53,45 @@ flowchart LR
 
 ## 🔀 ผังงานการทำงาน (Flowchart)
 
-![Flowchart ของระบบ](https://i.postimg.cc/Wp7kSD4Z/Microcontroller-Flowchart-drawio.png)
+```mermaid
+flowchart TD
+    Start([เริ่มต้นการทำงาน]) --> Init[ตั้งค่าพิน, OLED, เซ็นเซอร์<br>และโหลดการตั้งค่าจาก NVS]
+    Init --> LoopStart((เริ่ม Loop))
+    LoopStart --> ReadSensor[/อ่านค่าอุณหภูมิ/ความชื้น DHT11<br>และระยะทาง HC-SR04/]
+    
+    ReadSensor --> CheckInput{มีการกดปุ่มหรือ<br>ปรับค่า Potentiometer<br>หรือไม่?}
+    
+    CheckInput -- "ใช่" --> ProcessInput[ประมวลผลเมนู /<br>บันทึกค่าใหม่ / ปิดเสียง]
+    CheckInput -- "ไม่" --> CheckThreshold{ความชื้น/อุณหภูมิ<br>สูงเกินเกณฑ์<br>ที่ตั้งไว้หรือไม่?}
+    
+    ProcessInput --> CheckThreshold
+    
+    CheckThreshold -- "ใช่" --> Alert[แจ้งเตือนความชื้น:<br>ไฟ LED สีแดง + เสียง Buzzer]
+    CheckThreshold -- "ไม่" --> CheckCamera{กล้องอยู่ในตู้<br>หรือไม่?}
+    
+    Alert --> CheckCamera
+    
+    CheckCamera -- "ไม่อยู่" --> NoCam[สถานะ: No Camera]
+    CheckCamera -- "อยู่ (อยู่ในระยะ)" --> NormalCam[สถานะปกติ:<br>ไฟ LED สีเขียว]
+    
+    NoCam --> Display[/แสดงผลสถานะทั้งหมด<br>บนหน้าจอ OLED/]
+    NormalCam --> Display
+    
+    Display --> Delay[หน่วงเวลาอ่านค่า]
+    Delay --> LoopStart
+    
+    %% กำหนดสีตกแต่ง
+    classDef startEnd fill:#333,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef process fill:#222,stroke:#aaa,stroke-width:1px,color:#fff;
+    classDef decision fill:#222,stroke:#aaa,stroke-width:1px,color:#fff;
+    classDef loopNode fill:#222,stroke:#aaa,stroke-width:1px,color:#fff;
+    
+    class Start startEnd;
+    class Init,ProcessInput,Alert,NoCam,NormalCam,Delay process;
+    class ReadSensor,Display process;
+    class CheckInput,CheckThreshold,CheckCamera decision;
+    class LoopStart loopNode;
+```
 
 ## 🛠️ อุปกรณ์ที่ต้องใช้ (Hardware Requirements)
 
@@ -157,7 +195,7 @@ flowchart LR
 
 ## 🎥 วิดีโอสาธิตการทำงาน (Video Demonstration)
 
-https://github.com/user-attachments/assets/307a79fa-1d68-4e1c-8d24-c2332c993d24
+https://github.com/user-attachments/assets/4fec0ba1-4442-40e8-99b2-eb482aefe98b
 
 ---
 
