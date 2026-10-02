@@ -135,7 +135,7 @@ flowchart TD
 
 ### 📐 แผนภาพการต่อวงจร (Circuit Diagram)
 
-![แผนภาพการต่อวงจร Circuit Diagram](https://i.postimg.cc/3xhpZgXn/Add-a-subheading.png)
+![แผนภาพการต่อวงจร Circuit Diagram](https://i.postimg.cc/ydpXpKyq/curcuit.jpg)
 
 ## 💻 ซอฟต์แวร์และไลบรารี (Software & Libraries)
 
